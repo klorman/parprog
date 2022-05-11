@@ -15,12 +15,18 @@ pthread_mutex_t lock_x;
 void* thrFunc(void* arg) {
     ThreadData* data = (ThreadData*)arg;
     
+    //while(true) {
     pthread_mutex_lock(&lock_x);
     
+    //if (data->tid == global_x) {
     printf("My id = %2d, x = %d\n", data->tid, ++global_x);
-
+    //pthread_mutex_unlock(&lock_x);
+    //break;
+    //}
+    
     pthread_mutex_unlock(&lock_x);
-
+    //}
+    
     pthread_exit(NULL);
 }
 
